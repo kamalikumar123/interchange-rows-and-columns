@@ -1,0 +1,91 @@
+/*Java Program to interchange any two rows and columns in the given matrix*/
+import java.util.Scanner;
+public class Main 
+{
+    public static void main(String[] args) 
+    {
+        int m,n;   
+        
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter number of rows in matrix:");
+        m = sc.nextInt();  
+
+        System.out.print("Enter number of columns in matrix:");
+        n = sc.nextInt();  
+ 
+        int arr[][] = new int[m][n];  
+        System.out.println("Enter all the elements of matrix:");
+        for (int i = 0; i < m; i++) 
+        {
+            for (int j = 0; j < n; j++) 
+            {
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+       //Print the original matrix
+        System.out.println("The Original Matrix:");
+        for (int i = 0; i < m; i++) 
+        {
+            for (int j = 0; j < n; j++) 
+            {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println("");
+        }
+        while (true) 
+        {
+            System.out.println("Enter 1 to interchange rows");
+            System.out.println("Enter 2 to interchange columns");
+            System.out.println("Enter 3 to Exit");
+            int n1=sc.nextInt();
+            switch (n1) 
+            {
+                System.out.println("Enter the row numbers:");
+                int x = sc.nextInt();   
+                int y = sc.nextInt();
+                int temp=0;
+                for(int i = 0; i < m; i++)
+                {
+                    temp = arr[(x-1)][i];
+                    arr[x-1][i] = arr[y-1][i];
+                    arr[y-1][i] = temp;
+                }
+                //Print the matrix after interchanging elements
+                System.out.println("Matrix after interchanging rows:"+x +" and "+y);
+                for (int i = 0; i < m; i++) 
+                {
+                    for (int j = 0; j < n; j++) 
+                    {
+                        System.out.print(arr[i][j] + " ");
+                    }
+                System.out.println("");
+                }
+                break;
+                System.out.println("Enter the column numbers:");
+                int p = sc.nextInt();
+                int q = sc.nextInt();
+                int temp1=0;
+                for(int i = 0; i < p; i++)
+                {
+                    temp1 = arr[i][(p-1)];
+                    arr[i][p-1] = arr[i][(q-1)];
+                    arr[i][q-1] = temp1;
+                }
+         
+                System.out.println("Matrix after interchanging columns:"+p +" and "+q);
+                for (int i = 0; i < m; i++) 
+                {
+                    for (int j = 0; j < n; j++) 
+                    {
+                        System.out.print(arr[i][j] + " ");
+                    }
+                System.out.println("");
+                }
+                break;
+                System.exit(0);
+            }
+        }
+    }
+}
